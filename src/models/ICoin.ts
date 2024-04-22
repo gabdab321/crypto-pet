@@ -1,4 +1,4 @@
-export interface ICoinItem {
+export interface ICoin {
     id:                               string;
     symbol:                           string; // ticker
     name:                             string;
