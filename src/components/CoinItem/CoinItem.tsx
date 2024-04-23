@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Box, Button, Link, Typography} from "@mui/material";
 import {ICoin} from "../../models/ICoin";
 import {Link as RouterLink} from "react-router-dom";
 import {styled} from "@mui/material/styles";
 
+
+// something
 interface CoinItemProps {
     coin: ICoin
 }
