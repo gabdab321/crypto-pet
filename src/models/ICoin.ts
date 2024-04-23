@@ -15,8 +15,8 @@ export interface ICoin {
     market_cap_change_24h:            number;
     market_cap_change_percentage_24h: number;
     circulating_supply:               number;
-    total_supply:                     number;
-    max_supply:                       number;
+    total_supply:                     number | null;
+    max_supply:                       number | null;
     ath:                              number; // all time high
     ath_change_percentage:            number;
     ath_date:                         string;
