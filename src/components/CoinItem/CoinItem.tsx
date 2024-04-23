@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Button, Paper, Typography} from "@mui/material";
+import {Box, Button, Link, Typography} from "@mui/material";
 import {ICoin} from "../../models/ICoin";
 import {Link as RouterLink} from "react-router-dom";
 import {styled} from "@mui/material/styles";
@@ -10,11 +10,12 @@ interface CoinItemProps {
 const CoinItem = ({coin}: CoinItemProps) => {
 
     return (
-        <ItemBox>
-            <Box sx={{width: "50px", height: "50px", "& img": {width: "100%", height: "100%"}}}><img src={coin.image} alt=""/></Box>
-            <Typography sx={{mx: 2}} variant="h6" color="text.primary">{coin.market_cap_rank}  {coin.name} --- {coin.current_price}$</Typography>
-            <Button sx={{display: "flex", marginLeft: "auto"}} component={RouterLink} to={`coin/${coin.id}`} color="primary" variant="contained" >Explore</Button>
-        </ItemBox>
+        <Link sx={{textDecoration: "none"}} component={RouterLink} to={`coin/${coin.id}`}>
+            <ItemBox>
+                <Box sx={{width: "40px", height: "40px", "& img": {width: "100%", height: "100%"}}}><img src={coin.image} alt=""/></Box>
+                <Typography sx={{mx: 2, fontWeight: "bold", textDecoration: "none"}} color="text.primary">{coin.market_cap_rank}.  {coin.name} --- {coin.current_price}$</Typography>
+            </ItemBox>
+        </Link>
     );
 };
 
@@ -28,6 +29,7 @@ const ItemBox = styled(Box)(
           align-items: center;
           padding: 8px;
           transition: 0.4s all ease;
+          text-decoration: none;
           &:hover {
             background-color: ${theme.palette.background.paper};
           }
