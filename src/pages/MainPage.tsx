@@ -10,6 +10,7 @@ const MainPage = () => {
 
     return (
         <Container sx={{backgroundColor: "background.default"}}>
+            <Typography variant="h1" color="text.primary">HELLO</Typography>
             <CoinList/>
         </Container>
     );

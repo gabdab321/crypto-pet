@@ -1,9 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {Divider, Grid, Stack, Typography} from "@mui/material";
+import {
+    TableContainer,
+    TableBody,
+    TableHead,
+} from "@mui/material";
 import CoinItem from "../CoinItem/CoinItem";
 import {ICoin} from "../../models/ICoin";
 import CoinAPI from "../../services/CoinAPI";
 import GradientProgress from "../UI/GradientProgress";
+import ListNavigation from "../ListNavigation/ListNavigation";
 
 const CoinList = () => {
     const [coins, setCoins] = useState<ICoin[]>([])
@@ -14,19 +19,23 @@ const CoinList = () => {
     }, [])
 
     return (
-        <Grid container>
-            {coins.length > 0
-                ?
-                coins.map(coin =>
-                    <>
+        <TableContainer >
+            <TableHead>
+                <ListNavigation/>
+            </TableHead>
+            <TableBody>
+                {coins.length > 0
+                    ?
+                    coins.map(coin =>
+                            // <Link sx={{textDecoration: "none"}} component={RouterLink} to={`coin/${coin.id}`}>
                         <CoinItem key={coin.id} coin={coin}/>
-                    </>
-                )
-                :
-                <GradientProgress size={70} />
-            }
-
-        </Grid>
+                        // </Link>
+                    )
+                    :
+                    <GradientProgress size={70} />
+                }
+            </TableBody>
+        </TableContainer>
     );
 };
 
