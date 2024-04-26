@@ -13,7 +13,7 @@ const GradientProgress = (props: CircularProgressProps) => {
                     </linearGradient>
                 </defs>
             </svg>
-            <CircularProgress {...props} sx={{ 'svg circle': { stroke: 'url(#my_gradient)' } }} />
+            <CircularProgress {...props} sx={{ 'svg circle': { stroke: 'url(#my_gradient)'}, ...props.sx }} />
         </>
     );
 };

@@ -1,38 +1,68 @@
 import React from 'react';
 import {TableRow, Typography} from "@mui/material";
 import {ItemCell} from "../CoinItem/CoinItem";
+import {styled} from "@mui/material/styles";
 
 
-/* Used as a row of titles for columns   */
+/* Navigates user through the coin list table, used a head of table */
 const ListNavigation = () => {
+    // styles for each cell
+    const cellStyles = {
+        marketRank: { display: 'flex', minWidth: '50px', justifyContent: 'center' },
+        nameTicker: { alignSelf: 'center', minWidth: '350px' },
+        price: { minWidth: '180px', justifyContent: 'end' },
+        priceChange: { minWidth: '130px', alignItems: 'center', justifyContent: 'end' },
+        marketCap: { minWidth: '190px', justifyContent: 'end' },
+        circulatingSupply: { minWidth: '300px', justifyContent: 'end' },
+    };
+
     return (
-        <TableRow sx={{bgcolor: "background.paper", display: "flex", alignItems: "center",  padding: "16px 8px"}}>
-
-            <ItemCell sx={{display: "flex", minWidth: "50px", justifyContent: "center"}} > {/* market rank */}
-                <Typography variant="body1" sx={{textAlign: "center"}} color="text.primary">#</Typography>
+        <NavRow>
+            <ItemCell sx={cellStyles.marketRank}>
+                <Typography variant="body1" align="center" color="text.primary">
+                    #
+                </Typography>
             </ItemCell>
 
-            <ItemCell sx={{alignSelf: "center", minWidth: "350px"}}> {/* image + name + ticker */}
-                <Typography variant="body1"  color="text.primary">Name</Typography>
+            <ItemCell sx={cellStyles.nameTicker}>
+                <Typography variant="body1" color="text.primary">
+                    Name
+                </Typography>
             </ItemCell>
 
-            <ItemCell sx={{minWidth: "180px", justifyContent: "end"}}> {/* price */}
-                <Typography variant="body1" sx={{textAlign: "end"}} color="text.primary">Price</Typography>
+            <ItemCell sx={cellStyles.price}>
+                <Typography variant="body1" color="text.primary">
+                    Price
+                </Typography>
             </ItemCell>
 
-            <ItemCell sx={{minWidth: "130px", alignItems: "center", justifyContent: "end"}}> {/* price change by 24h(%) */}
-                <Typography variant="body1" color="text.primary">1d%</Typography>
+            <ItemCell sx={cellStyles.priceChange}>
+                <Typography variant="body1" color="text.primary">
+                    1d%
+                </Typography>
             </ItemCell>
 
-            <ItemCell sx={{minWidth: "190px", justifyContent: "end"}}> {/* market cap */}
-                <Typography variant="body1" color="text.primary">Capitalization</Typography>
+            <ItemCell sx={cellStyles.marketCap}>
+                <Typography variant="body1" color="text.primary">
+                    Capitalization
+                </Typography>
             </ItemCell>
 
-            <ItemCell sx={{minWidth: "300px", justifyContent: "end"}}> {/* circulating supply */}
-                <Typography  variant="body1" color="text.primary">Circulating supply</Typography>
+            <ItemCell sx={cellStyles.circulatingSupply}>
+                <Typography variant="body1" color="text.primary">
+                    Circulating Supply
+                </Typography>
             </ItemCell>
-        </TableRow>
+        </NavRow>
     );
 };
 
 export default ListNavigation;
+
+// styled components
+const NavRow = styled(TableRow)(({theme}) => `
+    background-color: ${theme.palette.background.paper};
+    display: flex;
+    align-items: center;
+    padding: 16px 8px;
+`)
