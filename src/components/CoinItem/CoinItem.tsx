@@ -85,7 +85,7 @@ const CoinItem = ({coin}: CoinItemProps) => {
                 <Typography variant="body1" align="right" color="text.primary">
                     {formatNumber(coin.circulating_supply)} {coin.symbol.toUpperCase()}
                 </Typography>
-                {supplyPercentage <= 100
+                {supplyPercentage >= 100
                     ?
                     ""
                     :
