@@ -1,6 +1,8 @@
 import axios from "axios";
 import apiKey from "../consts/apiKey";
 import {ICoin} from "../models/ICoin";
+import formatHistoricalData from "../utils/formatHistoricalData/formatHistoricalData";
+import {IChartData} from "../models/ChartModels";
 
 const baseUrl = "https://api.coingecko.com/api/v3/"
 const headers = {
@@ -12,16 +14,18 @@ export default class CoinAPI {
     static async getCoinsList(): Promise<ICoin[]> {
         const response = await axios.get(`${baseUrl}coins/markets?vs_currency=usd`, {headers})
 
-        console.log(response.data)
-
         return response.data
     }
 
     static async getCoinById(id: string): Promise<ICoin[]> {
         const response = await axios.get(`${baseUrl}coins/markets?vs_currency=usd&ids=${id}`, {headers})
 
-        console.log(response.data)
-
         return response.data
+    }
+
+    static async getCoinChartData(id: string): Promise<IChartData[]> {
+        const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart/?vs_currency=usd&days=365`, {headers})
+
+        return formatHistoricalData(response.data.prices)
     }
 }

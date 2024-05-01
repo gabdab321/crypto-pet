@@ -15,8 +15,7 @@ const CoinList = () => {
 
     // fetching coins from API
     useEffect(() => {
-        const data = CoinAPI.getCoinsList();
-        data.then(d => setCoins(d))
+        CoinAPI.getCoinsList().then(list => setCoins(list))
     }, [])
 
     return (

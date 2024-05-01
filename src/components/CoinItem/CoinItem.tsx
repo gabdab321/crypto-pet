@@ -13,6 +13,7 @@ interface CoinItemProps {
 }
 // TODO: add small chart for 24h change
 
+/* writes short info about coin in the list */
 const CoinItem = ({coin}: CoinItemProps) => {
     /* shortcut for minimizing JSX code */
     const supplyPercentage = countSupplyPercentage(coin.max_supply, coin.circulating_supply)
@@ -106,4 +107,5 @@ export default CoinItem;
 export const ItemCell = styled(TableCell)`
     display: flex;
     padding-left: 30px;
+    cursor: pointer;
 `
